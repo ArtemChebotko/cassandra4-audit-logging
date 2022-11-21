@@ -22,14 +22,14 @@
 
 <div class="step-title">Configure full query logging via cassandra.yaml</div>
 
-Previously, you enabled full query logging for a Cassandra node using `nodetool`, but the logging will not remain enabled when the node is restarted unless you edit the `cassandra.yaml` file. In this step, you will learn how to configure some of the properties full query logging. 
+Previously, you enabled audit logging for a Cassandra node using `nodetool`, but the logging will not remain enabled when the node is restarted unless you edit the `cassandra.yaml` file. In this step, you will learn how to audit logging in `cassandra.yaml`. 
 
-✅ Open open the `cassandra.yaml` file in the editor:
+✅ Open the `cassandra.yaml` file in the editor:
 ```
 nano $HOME/apache-cassandra/conf/cassandra.yaml
 ```
 
-✅ Find the line that contains `#full_query_logging_options:` and uncomment it and following lines with related configuration properties. Change `log_dir` to point to the `/tmp/fqllogs` directory. Your edited file may look like this:
+✅ Find the line that contains `#audit_logging_options:` and uncomment it and following lines with related configuration properties. Change `log_dir` to point to the `/tmp/fqllogs` directory. Your edited file may look like this:
 
 <pre class="non-executable-code">
 full_query_logging_options:
@@ -57,12 +57,6 @@ For the new configuration settings in `cassandra.yaml` to take effect, you will 
 
 In this step, you learned how to enable full query logging in the `cassandra.yaml` file and explored the configurable properties of full query logging. 
 
----
-<p>
-<span style="color:teal">**Pro Tip:**</span> 
-Settings configured with *nodetool* temporarily override settings in `cassandra.yaml`. However, settings configured with *nodetool* do not persist across shutdowns.
-</p>
----
 
 <!-- NAVIGATION -->
 <div id="navigation-bottom" class="navigation-bottom">
