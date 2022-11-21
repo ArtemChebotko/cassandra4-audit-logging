@@ -1,4 +1,4 @@
-# Full Query Logging
+# Audit Logging
 
 ## Learn how to use full query logging in Apache Cassandra®
 
