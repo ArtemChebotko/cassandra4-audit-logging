@@ -59,7 +59,7 @@ exit
 
 ✅ The audit log is stored in binary format so you will use `auditlogviewer` to see it in *human-readable* form:
 ```
-auditlogviewer /var/log/cassandra/audit
+auditlogviewer $HOME/apache-cassandra/logs/audit/
 ```
 
 Ignore any Java warnings you may see. The log output should contain the `INSERT`, `UPDATE` and `SELECT` commands you entered along with a timestamp, username and more.
@@ -89,7 +89,7 @@ exit
 
 ✅ Take another look at the audit log:
 ```
-auditlogviewer /var/log/cassandra/audit
+auditlogviewer $HOME/apache-cassandra/logs/audit/
 ```
 
 Since we disabled audit logging, the most recent inserts should not be reflected in the logs.
