@@ -57,6 +57,13 @@ For the new configuration settings in `cassandra.yaml` to take effect, you will 
 
 In this step, you learned how to enable full query logging in the `cassandra.yaml` file and explored the configurable properties of full query logging. 
 
+---
+<p>
+<span style="color:teal">**Pro Tip:**</span> 
+Settings configured with *nodetool* temporarily override settings in `cassandra.yaml`. However, settings configured with *nodetool* do not persist across shutdowns.
+</p>
+---
+
 <!-- NAVIGATION -->
 <div id="navigation-bottom" class="navigation-bottom">
  <a href='command:katapod.loadPage?[{"step":"step3"}]'

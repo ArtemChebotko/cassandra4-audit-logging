@@ -20,62 +20,81 @@
 
 <!-- CONTENT -->
 
-<div class="step-title">Create schema and perform queries</div>
+<div class="step-title">Enable audit logging via nodetool</div>
 
-In this step, you will connect using `cqlsh` and create a keyspace and table, perform some queries, and verify that full query logs are being created.
+In this step, you will use `nodetool` to dynamically enable audit logging. Next, you will insert and update some data. Finally, you will view the audit log.
 
-✅ Start the CQL Shell (`cqlsh`) so you can issue CQL commands:
+✅ Use `nodetool` to enable audit logging:
 ```
-cqlsh
-```
-
-✅ Create the `ks_full_query_logging` keyspace:
-```
-CREATE KEYSPACE ks_full_query_logging
-WITH replication = {
-  'class': 'NetworkTopologyStrategy', 
-  'DC-Houston': 1 };
-
-USE ks_full_query_logging;
+nodetool enableauditlog
 ```
 
-✅ Create the `movie_metadata` table:
+✅ Start the CQL shell:
 ```
-CREATE TABLE movie_metadata(
-  imdb_id        text,
-  overview       text,
-  release_date   text,
-  title          text,
-  average_rating float,
-  PRIMARY KEY(imdb_id));
+cqlsh -k ks_audit_logging
 ```
 
-✅ Insert a row into the `movie_metadata` table:
+✅ Insert a row into the `songs` table:
 ```
-INSERT INTO movie_metadata (imdb_id, overview, release_date, title, average_rating) 
-VALUES('tt0114709', 'Led by Woody, Andy''s toys live happily in his room until Andy''s birthday brings Buzz Lightyear onto the scene. Afraid of losing his place in Andy''s heart, Woody plots against Buzz. But when circumstances separate Buzz and Woody from their owner, the duo eventually learns to put aside their differences.', '10/30/95', 'Toy Story', 7.7);
-```
-
-✅ Now let's do a `SELECT`:
-```
-SELECT * FROM movie_metadata WHERE imdb_id = 'tt0114709';
+INSERT INTO songs (artist, title, year) VALUES ('Elton John', 'Daniel', 1974);
 ```
 
-You should see the row you just inserted.
+✅ Wait a minute! Elton John released *Daniel* in 1973 on the album *Don't Shoot Me I'm Only The Piano Player*!
+Update the row to reflect the correct year:
+```
+UPDATE songs SET year = 1973 WHERE artist = 'Elton John' AND title = 'Daniel';
+```
 
-✅ Type `exit` to close `cqlsh`.
+✅ Make sure the update worked.
+```
+SELECT * FROM songs WHERE artist = 'Elton John' AND title = 'Daniel';
+```
+
+You should see *Daniel* with the correct year - 1973.
+
+✅ Exit the CQL shell:
 ```
 exit
 ```
 
-✅ Now, let's check the contents of our log directory to see if anything has been created:
+✅ The audit log is stored in binary format so you will use `auditlogviewer` to see it in *human-readable* form:
 ```
-ls /tmp/fqllogs
+auditlogviewer /var/log/cassandra/audit
 ```
 
-You'll see two files, a file with a date timestamp in the name, and another file which provides a directory of all the dated files that have been written. You can try opening these files if you wish, but the contents won't make a lot of sense since they are binary data. Don't worry, Cassandra has a way to read this data.
+Ignore any Java warnings you may see. The log output should contain the `INSERT`, `UPDATE` and `SELECT` commands you entered along with a timestamp, username and more.
 
-In this step, you have created the `ks_full_query_logging` keyspace and the `movie_metadata` table, and performed some queries, and verified that full query logs were created.
+Audit logs will often contain sensitive data (account numbers, employee names, etc.). Therefore, the files (and the directories that contain them) should be protected using the host operating system's file system protections. Since the default audit logger implementaion does not give the option to redact specific fields, sensitive data should be masked or removed before sharing.
+
+✅ Use `nodetool` to disable audit logging:
+```
+nodetool disableauditlog
+```
+
+✅ Start the CQL shell:
+```
+cqlsh -k ks_audit_logging
+```
+
+✅ Insert two more songs into the `songs` table:
+```
+INSERT INTO songs (artist, title, year) VALUES ('Elton John', 'Bennie and the Jets', 1973);
+INSERT INTO songs (artist, title, year) VALUES ('Steve Miller Band', 'The Joker', 1974);
+```
+
+✅ Exit the CQL shell:
+```
+exit
+```
+
+✅ Take another look at the audit log:
+```
+auditlogviewer /var/log/cassandra/audit
+```
+
+Since we disabled audit logging, the most recent inserts should not be reflected in the logs.
+
+In this step, you used `nodetool` to enable and disable logging. You also used `auditlogviewer` to view the audit logs.
 
 <!-- NAVIGATION -->
 <div id="navigation-bottom" class="navigation-bottom">

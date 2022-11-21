@@ -20,28 +20,41 @@
 
 <!-- CONTENT -->
 
-<div class="step-title">Create schema</div>
+<div class="step-title">Create keyspace and table</div>
 
-In this step, you will enable full query logging via `nodetool`.
+In this step, you will connect using `cqlsh` and create a keyspace and table.
 
-We've already started a single node Cassandra cluster for you in the background. When the command prompt appears in the terminal, the node is initialized and ready to go.
-
-✅ First, let's create a directory to store our full query log files:
+✅ Start the CQL shell:
 ```
-mkdir /tmp/fqllogs
+cqlsh
 ```
 
-✅ Now you can connect to the node using `nodetool` and enable full query logging, using the directory we just created as the path:
+✅ Create the `ks_audit_logging` keyspace:
 ```
-nodetool enablefullquerylog --path /tmp/fqllogs
+CREATE KEYSPACE ks_audit_logging
+WITH replication = {
+  'class': 'NetworkTopologyStrategy', 
+  'DC-Houston': 1 };
+
+USE ks_audit_logging;
 ```
 
-✅ To get a listing of the other options available on this command, execute the following:
+✅ Create the `songs` table:
 ```
-nodetool help enablefullquerylog
+CREATE TABLE songs (
+   artist TEXT,
+   title TEXT,
+   year INT,
+   PRIMARY KEY ((artist), title)
+);
 ```
 
-In this step, you enabled full query logging dynamically on a running Cassandra node using `nodetool` and learned about the available options on the `enablefullquerylog` command.
+✅ Type `exit` to close `cqlsh`.
+```
+exit
+```
+
+In this step, you have created the `ks_audit_logging` keyspace and the `songs` table.
 
 <!-- NAVIGATION -->
 <div id="navigation-bottom" class="navigation-bottom">
