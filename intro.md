@@ -13,16 +13,16 @@
     <div class="container px-4 py-2">
      <div class="row g-4 py-2 row-cols-1 row-cols-lg-1">
       <div class="feature col div-choice">
-            <div class="scenario-description">Learn how to use full query logging in Apache Cassandra®.</div>
+            <div class="scenario-description">Learn how to use audit logging in Apache Cassandra®.</div>
             <ul>
               <li><span class="scenario-description-attribute">Difficulty</span>: Easy</li>
               <li><span class="scenario-description-attribute">Time</span>: 15 minutes</li>
             </ul>
             <div class="scenario-objectives">In this hands-on lab, you will:</div>
             <ul>
-              <li><span class="scenario-objective">Enable and disable full query logging statically (in <code>cassandra.yaml</code>) and dynamically (using <code>nodetool</code>)</span></li>
-              <li><span class="scenario-objective">Learn features of the full query logging tool <code>fqltool</code></span></li>
-              <li><span class="scenario-objective">Read and interpret full query logs</span></li>
+              <li><span class="scenario-objective">Dynamically enable/disable audit logging using <code>nodetool</code></span></li>
+              <li><span class="scenario-objective">Statically enable/disable audit logging in <code>cassandra.yaml</code></span></li>
+              <li><span class="scenario-objective">Configure logging properties</span></li>
             </ul>
       </div>
      </div>

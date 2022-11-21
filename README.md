@@ -1,17 +1,16 @@
 # Audit Logging
 
-## Learn how to use full query logging in Apache Cassandra®
+## Learn how to use audit logging in Apache Cassandra®
 
-Cassandra 4.x full query logging enables you to get the exact CQL query strings used by your client applications. This information can be used for:
-- Analyzing poorly performing queries 
-- Debugging queries that are producing incorrect results
-- Live traffic capture and replay
+Cassandra 4.x audit logging enables enterprises to track activity in their database. This information can be used for:
+- Regulatory compliance
+- Security compliance
 - Troubleshooting/Debugging
 
 **In this hands-on lab, you will:**
-- Enable and disable full query logging statically (in `cassandra.yaml`) and dynamically (using `nodetool`)
-- Learn features of the full query logging tool `fqltool`
-- Read and interpret full query logs
+- Dynamically enable/disable audit logging using `nodetool`
+- Statically enable/disable audit logging in `cassandra.yaml`
+- Configure logging properties
 
 _This hands-on lab is available on our [https://www.datastax.com/learn/whats-new-for-cassandra-4](https://www.datastax.com/learn/whats-new-for-cassandra-4) site, where you can find many more resources to help you succeed with Apache Cassandra._
 
