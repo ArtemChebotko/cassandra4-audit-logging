@@ -49,7 +49,7 @@ CREATE TABLE songs (
 );
 ```
 
-✅ Type `exit` to close `cqlsh`.
+✅ Type `exit` to close `cqlsh`:
 ```
 exit
 ```
