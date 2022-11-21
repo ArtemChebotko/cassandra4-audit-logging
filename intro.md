@@ -20,8 +20,8 @@
             </ul>
             <div class="scenario-objectives">In this hands-on lab, you will:</div>
             <ul>
-              <li><span class="scenario-objective">Dynamically enable/disable audit logging using <code>nodetool</code></span></li>
-              <li><span class="scenario-objective">Statically enable/disable audit logging in <code>cassandra.yaml</code></span></li>
+              <li><span class="scenario-objective">Dynamically enable and disable audit logging using <code>nodetool</code></span></li>
+              <li><span class="scenario-objective">Statically enable and disable audit logging in <code>cassandra.yaml</code></span></li>
               <li><span class="scenario-objective">Configure logging properties</span></li>
             </ul>
       </div>

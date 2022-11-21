@@ -8,8 +8,8 @@ Cassandra 4.x audit logging enables enterprises to track activity in their datab
 - Troubleshooting/Debugging
 
 **In this hands-on lab, you will:**
-- Dynamically enable/disable audit logging using `nodetool`
-- Statically enable/disable audit logging in `cassandra.yaml`
+- Dynamically enable and disable audit logging using `nodetool`
+- Statically enable and disable audit logging in `cassandra.yaml`
 - Configure logging properties
 
 _This hands-on lab is available on our [https://www.datastax.com/learn/whats-new-for-cassandra-4](https://www.datastax.com/learn/whats-new-for-cassandra-4) site, where you can find many more resources to help you succeed with Apache Cassandra._

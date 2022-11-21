@@ -24,9 +24,9 @@
         <br/>
         <div class="scenario-objectives">In this hands-on lab, you learned about:</div>
         <ul>
-              <li><span class="scenario-objective">Enabling and disabling full query logging</span></li>
-              <li><span class="scenario-objective">Features of the full query logging tool <code>fqltool</code></span></li>
-              <li><span class="scenario-objective">Reading and interpreting full query logs</span></li>              
+              <li><span class="scenario-objective">Enabling and disabling audit logging using <code>nodetool</code></span></li>
+              <li><span class="scenario-objective">Enabling and disabling audit logging in <code>cassandra.yaml</code></span></li>
+              <li><span class="scenario-objective">Configuring logging properties</span></li>
         </ul>
         <div class="resources">Learn more about Cassandra on <a href="https://datastax.com/dev" target="_blank">datastax.com/dev</a>:</div>
         <ul>
