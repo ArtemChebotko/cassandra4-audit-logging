@@ -20,11 +20,11 @@
 
 <!-- CONTENT -->
 
-<div class="step-title">Configuring Audit Logging</div>
+<div class="step-title">Configure audit logging</div>
 
 In this step, you will look at some of the configurable properties of audit logging. Then, you will demonstrate setting and unsetting one of these properties.
 
-✅ To get a listing of the other options available on this command, execute the following:
+✅ Get the list of available audit logging properties:
 ```
 nodetool help enableauditlog
 ```
@@ -66,7 +66,7 @@ auditlogviewer $HOME/apache-cassandra/logs/audit/
 
 You should see the query for Elton John songs but not the query for Paul Simon songs.
 
-In this step, you explored the configurable properties of audit logging. Next, you used `nodetool` to exclude logging queries. Then, you performed a query and used `auditlogviewer` to verify that the query was not logged.
+In this step, you explored the configurable properties of audit logging. Next, you used `nodetool` to exclude logging queries. Then, you performed queries and used `auditlogviewer` to verify how they were logged.
 
 <!-- NAVIGATION -->
 <div id="navigation-bottom" class="navigation-bottom">

@@ -22,7 +22,7 @@
 
 <div class="step-title">Enable audit logging via nodetool</div>
 
-In this step, you will use `nodetool` to dynamically enable audit logging. Next, you will insert and update some data. Finally, you will view the audit log.
+In this step, you will use `nodetool` to dynamically enable and disable audit logging. Next, you will insert and update some data. Finally, you will view the audit log.
 
 ✅ Use `nodetool` to enable audit logging:
 ```
@@ -45,7 +45,7 @@ Update the row to reflect the correct year:
 UPDATE songs SET year = 1973 WHERE artist = 'Elton John' AND title = 'Daniel';
 ```
 
-✅ Make sure the update worked.
+✅ Make sure the update worked:
 ```
 SELECT * FROM songs WHERE artist = 'Elton John' AND title = 'Daniel';
 ```
@@ -92,7 +92,7 @@ exit
 auditlogviewer $HOME/apache-cassandra/logs/audit/
 ```
 
-Since we disabled audit logging, the most recent inserts should not be reflected in the logs.
+Since we disabled audit logging, the most recent inserts are not reflected in the logs.
 
 In this step, you used `nodetool` to enable and disable logging. You also used `auditlogviewer` to view the audit logs.
 

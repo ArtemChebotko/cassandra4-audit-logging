@@ -22,7 +22,7 @@
 
 <div class="step-title">Create keyspace and table</div>
 
-In this step, you will connect using `cqlsh` and create a keyspace and table.
+In this step, you will connect to Cassandra using `cqlsh`, and create a keyspace and table.
 
 ✅ Start the CQL shell:
 ```
