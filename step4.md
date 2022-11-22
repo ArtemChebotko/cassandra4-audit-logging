@@ -29,33 +29,32 @@ Previously, you enabled audit logging for a Cassandra node using `nodetool`, but
 nano $HOME/apache-cassandra/conf/cassandra.yaml
 ```
 
-✅ Find the line that contains `#audit_logging_options:` and uncomment it and following lines with related configuration properties. Change `log_dir` to point to the `/tmp/fqllogs` directory. Your edited file may look like this:
+✅ Find the line that contains `audit_logging_options:` and change `enabled` from `false` to `true`. Your edited file may look like this:
 
 <pre class="non-executable-code">
-full_query_logging_options:
-    log_dir: /tmp/fqllogs
-    roll_cycle: HOURLY
-    block: true
-    max_queue_weight: 268435456 # 256 MiB
-    max_log_size: 17179869184 # 16 GiB
+audit_logging_options:
+    enabled: true
+    logger:
+      - class_name: BinAuditLogger
+    # audit_logs_dir:
+    # included_keyspaces:
+    # excluded_keyspaces: system, system_schema, system_virtual_schema
+    # included_categories:
+    # excluded_categories:
+    # included_users:
+    # excluded_users:
+    # roll_cycle: HOURLY
+    # block: true
+    # max_queue_weight: 268435456 # 256 MiB
+    # max_log_size: 17179869184 # 16 GiB
     ## archive command is "/path/to/script.sh %path" where %path is replaced with the file being rolled:
     # archive_command:
     # max_archive_retries: 10
 </pre>
 
-Here are the configurable properties for full query logging:
-
-- `log_dir`: Enable full query logging by setting this property to an existing directory location.
-- `roll_cycle`: Sets the frequency at which log segments are rolled - DAILY, HOURLY (the default), or MINUTELY.
-- `block`: Determines whether writes to the full query log will block query completion if full query logging falls behind, defaults to true.
-- `max_queue_weight`: Sets the maximum size of the in-memory queue of full query logs to be written to disk before blocking occurs, defaults to 256 MiB. 
-- `max_log_size`: Sets the maximum size of full query log files on disk (default 16 GiB). After this value is exceeded, the oldest log file will be deleted.
-- `archive_command`: Optionally, provides a command that will be used to archive full query log files before deletion.
-- `max_archive_retries`: Sets a maximum number of times a failed archive command will be retried (defaults to 10).
-
 For the new configuration settings in `cassandra.yaml` to take effect, you will need to save the file and restart Cassandra.
 
-In this step, you learned how to enable full query logging in the `cassandra.yaml` file and explored the configurable properties of full query logging. 
+In this step, you learned how to enable audit logging in the `cassandra.yaml` file. 
 
 
 <!-- NAVIGATION -->
